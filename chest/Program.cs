@@ -16,20 +16,20 @@ namespace chest
         {
             tablechest = new chest();
         }
-        public bool szach(string[,] tabToCheck)
+        public bool szachWhite(string[,] tabToCheck)
         {
             Console.WriteLine("sprawdzanie szacha");
-            int WhiteKingPositionX=0;
+            int WhiteKingPositionX = 0;
 
-            int WhiteKingPositionY=0;
-            int BlackKingPositionY=0;
-            int BlackKingPositionX=0;
+            int WhiteKingPositionY = 0;
+            int BlackKingPositionY = 0;
+            int BlackKingPositionX = 0;
             Console.WriteLine(tabToCheck.GetLength(0));
             for (int i = 0; i < tabToCheck.GetLength(0); i++)
             {
                 for (int j = 0; j < tabToCheck.GetLength(0); j++)
                 {
-                    if (tabToCheck[i,j]=="k1")
+                    if (tabToCheck[i, j] == "k1")
                     {
                         WhiteKingPositionX = j;
                         WhiteKingPositionY = i;
@@ -39,13 +39,13 @@ namespace chest
                         BlackKingPositionX = j;
                         BlackKingPositionY = i;
                     }
-                 
+
                 }
             }
-            
-            Console.WriteLine( "KWX = "+ WhiteKingPositionX +" KWY = " + WhiteKingPositionY);
+
+            Console.WriteLine("KWX = " + WhiteKingPositionX + " KWY = " + WhiteKingPositionY);
             //sprawdzanie po X+
-            for (int i = WhiteKingPositionX+1; i < tabToCheck.GetLength(0); i++)
+            for (int i = WhiteKingPositionX + 1; i < tabToCheck.GetLength(0); i++)
             {
                 if (i <= 7 && i >= 0)
                 {
@@ -56,7 +56,7 @@ namespace chest
                         break;
 
                     }
-                    else if(tabToCheck[WhiteKingPositionY, i] == "oo")
+                    else if (tabToCheck[WhiteKingPositionY, i] == "oo")
                     {
                         continue;
                     }
@@ -72,36 +72,36 @@ namespace chest
                 }
             }
             //sprawdzanie po X-
-            for (int i = WhiteKingPositionX-1; i >= 0 ; i--)
+            for (int i = WhiteKingPositionX - 1; i >= 0; i--)
             {
                 if (i <= 7 && i >= 0)
                 {
                     Console.WriteLine(tabToCheck[WhiteKingPositionY, i]);
-                if (tabToCheck[WhiteKingPositionY, i] != "oo" && tabToCheck[WhiteKingPositionY, i] != "w2" && tabToCheck[WhiteKingPositionY, i] != "h2" && tabToCheck[WhiteKingPositionY, i] != "k2")
-                {
-                    break;
+                    if (tabToCheck[WhiteKingPositionY, i] != "oo" && tabToCheck[WhiteKingPositionY, i] != "w2" && tabToCheck[WhiteKingPositionY, i] != "h2" && tabToCheck[WhiteKingPositionY, i] != "k2")
+                    {
+                        break;
 
-                }
+                    }
                     else if (tabToCheck[WhiteKingPositionY, i] == "oo")
                     {
                         continue;
                     }
                     else
-                {
-                    Console.WriteLine("Szach");
-                    return true;
+                    {
+                        Console.WriteLine("Szach");
+                        return true;
+                    }
                 }
-            }
                 else
                 {
-                break;
+                    break;
+                }
             }
-        }
             //sprawdzanie po Y+
-            for (int i = WhiteKingPositionY+1; i < tabToCheck.GetLength(0); i++)
+            for (int i = WhiteKingPositionY + 1; i < tabToCheck.GetLength(0); i++)
 
             {
-                if (i<=7 &&i>=0)
+                if (i <= 7 && i >= 0)
                 {
                     Console.WriteLine(tabToCheck[i, WhiteKingPositionX]);
                     if (tabToCheck[i, WhiteKingPositionX] != "oo" && tabToCheck[i, WhiteKingPositionX] != "w2" && tabToCheck[i, WhiteKingPositionX] != "h2" && tabToCheck[i, WhiteKingPositionX] != "k2")
@@ -123,19 +123,19 @@ namespace chest
                 {
                     break;
                 }
-                
+
             }
             //sprawdzanie po Y-
-            for (int i = WhiteKingPositionY-1; i >=0; i--)
+            for (int i = WhiteKingPositionY - 1; i >= 0; i--)
             {
                 if (i <= 7 && i >= 0)
-                { 
-                    Console.WriteLine(tabToCheck[i, WhiteKingPositionX] + "y1");
-                 if (tabToCheck[i, WhiteKingPositionX] != "oo" && tabToCheck[i, WhiteKingPositionX] != "w2" && tabToCheck[i, WhiteKingPositionX] != "h2" && tabToCheck[i, WhiteKingPositionX] != "k2")
                 {
-                      break;
+                    Console.WriteLine(tabToCheck[i, WhiteKingPositionX] + "y1");
+                    if (tabToCheck[i, WhiteKingPositionX] != "oo" && tabToCheck[i, WhiteKingPositionX] != "w2" && tabToCheck[i, WhiteKingPositionX] != "h2" && tabToCheck[i, WhiteKingPositionX] != "k2")
+                    {
+                        break;
 
-                }
+                    }
                     else if (tabToCheck[i, WhiteKingPositionX] == "oo")
                     {
                         Console.WriteLine("hmm");
@@ -143,10 +143,223 @@ namespace chest
                     }
 
                     else
-                {
-                    Console.WriteLine("Szach");
-                    return true;
+                    {
+                        Console.WriteLine("Szach");
+                        return true;
+                    }
                 }
+                else
+                {
+                    break;
+                }
+            }
+            //sprawdzanie po X+ Y+
+            var licznik = true;
+
+            for (int i = WhiteKingPositionY + 1; i < tabToCheck.GetLength(0); i++)
+            {
+
+                for (int j = WhiteKingPositionX + 1; j < tabToCheck.GetLength(0); j++)
+                {
+                    if (i <= 7 && i >= 0 && j <= 7 && j >= 0)
+                    {
+
+                        if (i == j)
+                        {
+                            Console.WriteLine(tabToCheck[i, j] + "x "+ i +" y "+ j);
+                            if (licznik)
+                            {
+
+
+                                if (tabToCheck[i, j] != "oo" && tabToCheck[i, j] != "h2" && tabToCheck[i, j] != "p2" && tabToCheck[i, j] != "g2" && tabToCheck[i, j] != "k2")
+                                {
+                                    break;
+
+                                }
+                                else if (tabToCheck[i, j] == "oo")
+                                {
+                                    Console.WriteLine("hmm");
+                                    licznik = false;
+                                    continue;
+                                }
+
+                                else
+                                {
+                                    Console.WriteLine("Szach");
+                                    return true;
+                                }
+                            }
+                            else
+                            {
+                                if (tabToCheck[i, j] != "oo" && tabToCheck[i, j] != "h2" && tabToCheck[i, j] != "g2" )
+                                {
+                                    break;
+
+                                }
+                                else if (tabToCheck[i, WhiteKingPositionX] == "oo")
+                                {
+                                    Console.WriteLine("hmm");
+                                    licznik = false;
+                                    continue;
+                                }
+
+                                else
+                                {
+                                    Console.WriteLine("Szach");
+                                    return true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            continue;
+                        }
+
+                    }
+                    else
+                    {
+
+                        break;
+                    }
+                }
+            }
+            return false;
+
+        }
+        public bool szachBlack(string[,] tabToCheck)
+        {
+            Console.WriteLine("sprawdzanie szacha");
+            int WhiteKingPositionX = 0;
+
+            int WhiteKingPositionY = 0;
+            int BlackKingPositionY = 0;
+            int BlackKingPositionX = 0;
+            Console.WriteLine(tabToCheck.GetLength(0));
+            for (int i = 0; i < tabToCheck.GetLength(0); i++)
+            {
+                for (int j = 0; j < tabToCheck.GetLength(0); j++)
+                {
+                    if (tabToCheck[i, j] == "k1")
+                    {
+                        WhiteKingPositionX = j;
+                        WhiteKingPositionY = i;
+                    }
+                    if (tabToCheck[i, j] == "k2")
+                    {
+                        BlackKingPositionX = j;
+                        BlackKingPositionY = i;
+                    }
+
+                }
+            }
+
+
+
+            //black King
+            Console.WriteLine("KBX = " + BlackKingPositionX + " KBY = " + BlackKingPositionY);
+            //sprawdzanie po X+
+            for (int i = BlackKingPositionX + 1; i < tabToCheck.GetLength(0); i++)
+            {
+                if (i <= 7 && i >= 0)
+                {
+                    Console.WriteLine(tabToCheck[BlackKingPositionY, i]);
+                    if (tabToCheck[BlackKingPositionY, i] != "oo" && tabToCheck[BlackKingPositionY, i] != "w1" && tabToCheck[BlackKingPositionY, i] != "h1" && tabToCheck[BlackKingPositionY, i] != "k1")
+                    {
+
+                        break;
+
+                    }
+                    else if (tabToCheck[BlackKingPositionY, i] == "oo")
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Szach");
+                        return true;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+            //sprawdzanie po X-
+            for (int i = BlackKingPositionX - 1; i >= 0; i--)
+            {
+                if (i <= 7 && i >= 0)
+                {
+                    Console.WriteLine(tabToCheck[BlackKingPositionY, i]);
+                    if (tabToCheck[BlackKingPositionY, i] != "oo" && tabToCheck[BlackKingPositionY, i] != "w1" && tabToCheck[BlackKingPositionY, i] != "h1" && tabToCheck[BlackKingPositionY, i] != "k1")
+                    {
+                        break;
+
+                    }
+                    else if (tabToCheck[BlackKingPositionY, i] == "oo")
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Szach");
+                        return true;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+            //sprawdzanie po Y+
+            for (int i = BlackKingPositionY + 1; i < tabToCheck.GetLength(0); i++)
+
+            {
+                if (i <= 7 && i >= 0)
+                {
+                    Console.WriteLine(tabToCheck[i, BlackKingPositionX]);
+                    if (tabToCheck[i, BlackKingPositionX] != "oo" && tabToCheck[i, BlackKingPositionX] != "w1" && tabToCheck[i, BlackKingPositionX] != "h1" && tabToCheck[i, BlackKingPositionX] != "k1")
+                    {
+                        break;
+
+                    }
+                    else if (tabToCheck[i, BlackKingPositionX] == "oo")
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Szach");
+                        return true;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+            //sprawdzanie po Y-
+            for (int i = BlackKingPositionY - 1; i >= 0; i--)
+            {
+                if (i <= 7 && i >= 0)
+                {
+                    Console.WriteLine(tabToCheck[i, BlackKingPositionX] + "y1");
+                    if (tabToCheck[i, BlackKingPositionX] != "oo" && tabToCheck[i, BlackKingPositionX] != "w1" && tabToCheck[i, BlackKingPositionX] != "h1" && tabToCheck[i, BlackKingPositionX] != "k1")
+                    {
+                        break;
+
+                    }
+                    else if (tabToCheck[i, BlackKingPositionX] == "oo")
+                    {
+                        Console.WriteLine("hmm");
+                        continue;
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("Szach");
+                        return true;
+                    }
                 }
                 else
                 {
@@ -155,12 +368,12 @@ namespace chest
             }
             return false;
         }
-        public void moveFromTo(int fromI, int fromJ , int toI, int toJ)
+        public void moveFromTo(int fromI, int fromJ, int toI, int toJ)
         {
 
             string tmpToMove = tablechest.tab[fromJ - 1, fromI - 1];
             string tmpEndMove = tablechest.tab[toJ - 1, toI - 1];
-           
+
             if (check(fromI, fromJ, toI, toJ))
             {
 
@@ -207,7 +420,7 @@ namespace chest
                         Console.WriteLine("Teraz ruch czarnych");
 
                     }
-                    
+
                     else if (tmpEndMove == "p1" || tmpEndMove == "s1" || tmpEndMove == "w1" || tmpEndMove == "g1" || tmpEndMove == "h1" || tmpEndMove == "k1")
                     {
                         Console.WriteLine("Error pozycja zajeta przez twojego pionka.");
@@ -237,57 +450,60 @@ namespace chest
                 }
 
 
-                
+
             }
 
             else
             {
-                
+
                 Console.WriteLine("EROR-powtórz ruch");
             }
-            if (szach(tablechest.tab))
+            if (szachBlack(tablechest.tab))
             {
-                Console.WriteLine("szach");
+                Console.WriteLine("szach czarne");
             }
-            
-            
+            else if (szachWhite(tablechest.tab))
+            {
+                Console.WriteLine("szach białe");
+            }
+
         }
         public bool check(int fromI, int fromJ, int toI, int toJ)
         {
-            string tmpFrom = tablechest.tab[fromJ-1, fromI-1];
-            string tmpTo = tablechest.tab[toJ-1, toI-1];
+            string tmpFrom = tablechest.tab[fromJ - 1, fromI - 1];
+            string tmpTo = tablechest.tab[toJ - 1, toI - 1];
             int moveX = fromI - toI;
-        
+
             int moveY = fromJ - toJ;
-          
-             //pionek
-            if (tmpFrom == "p1" || tmpFrom == "p2") 
+
+            //pionek
+            if (tmpFrom == "p1" || tmpFrom == "p2")
             {
-                if ((moveY < 0 && moveY > -3 && numberOfMove < 3 &&  moveX == 0) ||  (moveY > 0 && moveY < 3 && moveX == 0 && numberOfMove < 3))
+                if ((moveY < 0 && moveY > -3 && numberOfMove < 3 && moveX == 0) || (moveY > 0 && moveY < 3 && moveX == 0 && numberOfMove < 3))
                 {
                     Console.WriteLine("Pierwsze ruchy");
-                        return true;
-                    
+                    return true;
+
                 }
                 else
                 {
-                  
-                        if ((moveY <0 && moveY > -2 && moveX == 0) || (moveY > 0 && moveY < 2 && moveX == 0))
+
+                    if ((moveY < 0 && moveY > -2 && moveX == 0) || (moveY > 0 && moveY < 2 && moveX == 0))
+                    {
+                        if (tmpTo == "oo")
                         {
-                            if (tmpTo == "oo") 
-                            {
                             Console.WriteLine("normal ruch");
-                                return true;
-                            }
-                            else
-                            {
+                            return true;
+                        }
+                        else
+                        {
                             Console.WriteLine("NIEDOZOWLONY 1");
                             return false;
-                            
-                            }
-                            
+
                         }
-                    else if ((moveX>0&& moveX<2 && moveY >0 && moveY<2 && tmpFrom=="p2") || (moveX < 0 && moveX > -2 && moveY < 0 && moveY > -2 && tmpFrom == "p1") || (moveX > 0 && moveX < 2 && moveY < 0 && moveY > -2 && tmpFrom == "p1") || (moveX < 0 && moveX > -2 && moveY > 0 && moveY < 2 && tmpFrom == "p2"))
+
+                    }
+                    else if ((moveX > 0 && moveX < 2 && moveY > 0 && moveY < 2 && tmpFrom == "p2") || (moveX < 0 && moveX > -2 && moveY < 0 && moveY > -2 && tmpFrom == "p1") || (moveX > 0 && moveX < 2 && moveY < 0 && moveY > -2 && tmpFrom == "p1") || (moveX < 0 && moveX > -2 && moveY > 0 && moveY < 2 && tmpFrom == "p2"))
                     {
                         if (tmpTo == "oo")
                         {
@@ -305,13 +521,13 @@ namespace chest
                         Console.WriteLine("NIEDOZOWLONY 3" + tmpFrom + " " + tmpTo + moveX + moveY);
                         return false;
                     }
-                    
+
                 }
             }
             //skoczek
             if (tmpFrom == "s1" || tmpFrom == "s2")
             {
-                if (moveX == 1 && moveY ==2)
+                if (moveX == 1 && moveY == 2)
                 {
                     return true;
                 }
@@ -346,7 +562,7 @@ namespace chest
                 }
                 else
                 {
-                    
+
                     Console.WriteLine("Niedozwolny ruch skoczka");
                     return false;
                 }
@@ -354,17 +570,17 @@ namespace chest
             //wieza
             if (tmpFrom == "w1" || tmpFrom == "w2")
             {
-          
+
                 if (moveX == 0)
                 {
-                    if (moveY>0)
+                    if (moveY > 0)
                     {
                         Console.WriteLine("Y+");
-                        for (int i = fromJ-2 ; i > toJ-1; i--)
+                        for (int i = fromJ - 2; i > toJ - 1; i--)
                         {
                             Console.WriteLine("dziala");
                             Console.WriteLine(tablechest.tab[i, fromI - 1]);
-                            if (tablechest.tab[i, fromI-1] != "oo")
+                            if (tablechest.tab[i, fromI - 1] != "oo")
                             {
                                 Console.WriteLine("cos stoi na przeszkodzie");
                                 return false;
@@ -377,9 +593,9 @@ namespace chest
                     else
                     {
                         Console.WriteLine("Y-");
-                        for (int i = fromJ; i < toJ-1; i++)
+                        for (int i = fromJ; i < toJ - 1; i++)
                         {
-                            if (tablechest.tab[i, fromI-1] != "oo")
+                            if (tablechest.tab[i, fromI - 1] != "oo")
                             {
                                 Console.WriteLine("cos stoi na przeszkodzie");
                                 return false;
@@ -389,17 +605,17 @@ namespace chest
                         }
                         return true;
                     }
-                   
-                    
+
+
                 }
                 if (moveY == 0)
                 {
-                    if (moveX>0)
+                    if (moveX > 0)
                     {
                         Console.WriteLine("X+");
-                        for (int i = fromI ; i > toI-1; i--)
+                        for (int i = fromI; i > toI - 1; i--)
                         {
-                            if (tablechest.tab[fromJ-1, i] != "oo")
+                            if (tablechest.tab[fromJ - 1, i] != "oo")
                             {
                                 Console.WriteLine("cos stoi na przeszkodzie");
                                 return false;
@@ -412,9 +628,9 @@ namespace chest
                     else
                     {
                         Console.WriteLine("X-");
-                        for (int i = fromI ; i < toI-1; i++)
+                        for (int i = fromI; i < toI - 1; i++)
                         {
-                            if (tablechest.tab[fromJ-1, i] != "oo")
+                            if (tablechest.tab[fromJ - 1, i] != "oo")
                             {
                                 Console.WriteLine("cos stoi na przeszkodzie");
                                 return false;
@@ -425,8 +641,8 @@ namespace chest
                         return true;
 
                     }
-                 
-                
+
+
                 }
                 else
                 {
@@ -437,7 +653,7 @@ namespace chest
             //goniec
             if (tmpFrom == "g1" || tmpFrom == "g2")
             {
-                if (moveX==moveY || -moveX == -moveY || -moveX == moveY || moveX == -moveY )
+                if (moveX == moveY || -moveX == -moveY || -moveX == moveY || moveX == -moveY)
                 {
                     if (moveX > 0)
                     {
@@ -456,8 +672,8 @@ namespace chest
                             Console.WriteLine("----" + moveX + " " + moveY + "----");
                             return true;
                         }
-                    
-                       else if (moveY < 0)
+
+                        else if (moveY < 0)
                         {
                             for (int i = fromI; i > toI - 1; i--)
                             {
@@ -469,14 +685,14 @@ namespace chest
                                     }
                                 }
                             }
-                            Console.WriteLine("----"+ moveX +" "+ moveY + "---eee-");
+                            Console.WriteLine("----" + moveX + " " + moveY + "---eee-");
                             return true;
                         }
                         return false;
-                  
+
                     }
-                  
-                    if (moveX<0)
+
+                    if (moveX < 0)
                     {
                         if (moveY > 0)
                         {
@@ -493,7 +709,7 @@ namespace chest
                             Console.WriteLine("----" + moveX + " " + moveY + "----");
                             return true;
                         }
-                        
+
 
                         else if (moveY < 0)
                         {
@@ -511,13 +727,13 @@ namespace chest
                             return true;
                         }
                         return false;
-                       
+
                     }
                     return false;
                 }
                 else
                 {
-                    
+
                     Console.WriteLine("niedozwolony ruch gonca");
                     return false;
                 }
@@ -532,7 +748,7 @@ namespace chest
                         Console.WriteLine("Y+");
                         for (int i = fromJ - 2; i > toJ - 1; i--)
                         {
-                            
+
                             Console.WriteLine(tablechest.tab[i, fromI - 1]);
                             if (tablechest.tab[i, fromI - 1] != "oo")
                             {
@@ -684,7 +900,7 @@ namespace chest
             }
             if (tmpFrom == "k1" || tmpFrom == "k2")
             {
-                if (-2<moveX && moveX<2 && -2 < moveY && moveY < 2)
+                if (-2 < moveX && moveX < 2 && -2 < moveY && moveY < 2)
                 {
                     return true;
                 }
@@ -710,13 +926,13 @@ namespace chest
             Console.Write("White: ");
             for (int i = 0; i < tablechest.playerWhite.Length; i++)
             {
-                Console.Write(tablechest.playerWhite[i].ToUpper()+ ", ");
+                Console.Write(tablechest.playerWhite[i].ToUpper() + ", ");
             }
             Console.WriteLine();
             Console.Write("Black: ");
             for (int i = 0; i < tablechest.playerBlack.Length; i++)
             {
-                Console.Write( tablechest.playerBlack[i].ToUpper() + ", ");
+                Console.Write(tablechest.playerBlack[i].ToUpper() + ", ");
             }
             Console.WriteLine();
         }
@@ -743,12 +959,12 @@ namespace chest
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    Console.Write("  " + tabToWrite[i,j].ToUpper()+ "  ");
+                    Console.Write("  " + tabToWrite[i, j].ToUpper() + "  ");
                 }
                 Console.WriteLine();
                 Console.WriteLine();
             }
-            
+
         }
     }
     class Program
@@ -765,13 +981,13 @@ namespace chest
                 Console.WriteLine("Podaj koniec: ");
                 int xk = int.Parse(Console.ReadLine());
                 int yk = int.Parse(Console.ReadLine());
-                if (0<xk && xk<9 && 0 < xo && xo < 9 && 0 < yo && yo < 9 && 0 < yk && yk < 9)
+                if (0 < xk && xk < 9 && 0 < xo && xo < 9 && 0 < yo && yo < 9 && 0 < yk && yk < 9)
                 {
                     newGame.moveFromTo(xo, yo, xk, yk);
                     newGame.Write();
-                  
+
                 }
-               
+
             }
 
             Console.ReadKey();
