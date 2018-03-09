@@ -47,58 +47,110 @@ namespace chest
             //sprawdzanie po X+
             for (int i = WhiteKingPositionX+1; i < tabToCheck.GetLength(0); i++)
             {
-                if (tabToCheck[WhiteKingPositionY,i]!="oo" || tabToCheck[WhiteKingPositionY, i] != "w2" || tabToCheck[WhiteKingPositionY, i] != "h2" || tabToCheck[WhiteKingPositionY, i] != "k2")
+                if (i <= 7 && i >= 0)
                 {
+                    Console.WriteLine(tabToCheck[WhiteKingPositionY, i]);
+                    if (tabToCheck[WhiteKingPositionY, i] != "oo" && tabToCheck[WhiteKingPositionY, i] != "w2" && tabToCheck[WhiteKingPositionY, i] != "h2" && tabToCheck[WhiteKingPositionY, i] != "k2")
+                    {
 
-                    break;
-                
+                        break;
+
+                    }
+                    else if(tabToCheck[WhiteKingPositionY, i] == "oo")
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Szach");
+                        return true;
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Szach");
-                    return true;
+                    break;
                 }
             }
             //sprawdzanie po X-
             for (int i = WhiteKingPositionX-1; i >= 0 ; i--)
             {
-                if (tabToCheck[WhiteKingPositionY, i] != "oo" || tabToCheck[WhiteKingPositionY, i] != "w2" || tabToCheck[WhiteKingPositionY, i] != "h2" || tabToCheck[WhiteKingPositionY, i] != "k2")
+                if (i <= 7 && i >= 0)
+                {
+                    Console.WriteLine(tabToCheck[WhiteKingPositionY, i]);
+                if (tabToCheck[WhiteKingPositionY, i] != "oo" && tabToCheck[WhiteKingPositionY, i] != "w2" && tabToCheck[WhiteKingPositionY, i] != "h2" && tabToCheck[WhiteKingPositionY, i] != "k2")
                 {
                     break;
 
                 }
-                else
+                    else if (tabToCheck[WhiteKingPositionY, i] == "oo")
+                    {
+                        continue;
+                    }
+                    else
                 {
                     Console.WriteLine("Szach");
                     return true;
                 }
             }
-            //sprawdzanie po Y+
-            for (int i = WhiteKingPositionY; i < tabToCheck.GetLength(0); i++)
-            {
-                if (tabToCheck[WhiteKingPositionY, i] != "oo" || tabToCheck[WhiteKingPositionY, i] != "w2" || tabToCheck[WhiteKingPositionY, i] != "h2" || tabToCheck[WhiteKingPositionY, i] != "k2")
+                else
                 {
-                    break;
+                break;
+            }
+        }
+            //sprawdzanie po Y+
+            for (int i = WhiteKingPositionY+1; i < tabToCheck.GetLength(0); i++)
 
+            {
+                if (i<=7 &&i>=0)
+                {
+                    Console.WriteLine(tabToCheck[i, WhiteKingPositionX]);
+                    if (tabToCheck[i, WhiteKingPositionX] != "oo" && tabToCheck[i, WhiteKingPositionX] != "w2" && tabToCheck[i, WhiteKingPositionX] != "h2" && tabToCheck[i, WhiteKingPositionX] != "k2")
+                    {
+                        break;
+
+                    }
+                    else if (tabToCheck[i, WhiteKingPositionX] == "oo")
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Szach");
+                        return true;
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Szach");
-                    return true;
+                    break;
                 }
+                
             }
             //sprawdzanie po Y-
-            for (int i = WhiteKingPositionY; i >=0; i--)
+            for (int i = WhiteKingPositionY-1; i >=0; i--)
             {
-                if (tabToCheck[WhiteKingPositionY, i] != "oo" || tabToCheck[WhiteKingPositionY, i] != "w2" || tabToCheck[WhiteKingPositionY, i] != "h2" || tabToCheck[WhiteKingPositionY, i] != "k2")
+                if (i <= 7 && i >= 0)
+                { 
+                    Console.WriteLine(tabToCheck[i, WhiteKingPositionX] + "y1");
+                 if (tabToCheck[i, WhiteKingPositionX] != "oo" && tabToCheck[i, WhiteKingPositionX] != "w2" && tabToCheck[i, WhiteKingPositionX] != "h2" && tabToCheck[i, WhiteKingPositionX] != "k2")
                 {
-                    break;
+                      break;
 
                 }
-                else
+                    else if (tabToCheck[i, WhiteKingPositionX] == "oo")
+                    {
+                        Console.WriteLine("hmm");
+                        continue;
+                    }
+
+                    else
                 {
                     Console.WriteLine("Szach");
                     return true;
+                }
+                }
+                else
+                {
+                    break;
                 }
             }
             return false;
