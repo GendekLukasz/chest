@@ -130,7 +130,7 @@ namespace chest
             {
                 if (i <= 7 && i >= 0)
                 {
-                    Console.WriteLine(tabToCheck[i, WhiteKingPositionX] + "y1");
+                   
                     if (tabToCheck[i, WhiteKingPositionX] != "oo" && tabToCheck[i, WhiteKingPositionX] != "w2" && tabToCheck[i, WhiteKingPositionX] != "h2" && tabToCheck[i, WhiteKingPositionX] != "k2")
                     {
                         break;
@@ -138,7 +138,7 @@ namespace chest
                     }
                     else if (tabToCheck[i, WhiteKingPositionX] == "oo")
                     {
-                        Console.WriteLine("hmm");
+           
                         continue;
                     }
 
@@ -613,7 +613,7 @@ namespace chest
                     if (moveX > 0)
                     {
                         Console.WriteLine("X+");
-                        for (int i = fromI; i > toI - 1; i--)
+                        for (int i = fromI-2; i > toI - 1; i--)
                         {
                             if (tablechest.tab[fromJ - 1, i] != "oo")
                             {
